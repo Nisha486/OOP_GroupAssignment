@@ -1,1 +1,57 @@
+//Mohamed Irham Fahar El dine 0389843
+
+package SDGApplianceModule.entity;
+
+public class Household {
+
+    private String householdName;
+    private String address;
+    private int numberOfOccupants;
+
+    public Household(String householdName, String address, int numberOfOccupants) {
+        setHouseholdName(householdName);
+        setAddress(address);
+        setNumberOfOccupants(numberOfOccupants);
+    }
+
+    public String getHouseholdName() {
+        return householdName;
+    }
+
+    public void setHouseholdName(String householdName) {
+        if (householdName == null || householdName.trim().isEmpty()) {
+            this.householdName = "Unnamed Household";
+        } else {
+            this.householdName = householdName;
+        }
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public int getNumberOfOccupants() {
+        return numberOfOccupants;
+    }
+
+    public void setNumberOfOccupants(int numberOfOccupants) {
+        if (numberOfOccupants < 0) {
+            this.numberOfOccupants = 0;
+        } else {
+            this.numberOfOccupants = numberOfOccupants;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return ("Household: " + householdName +
+                "\nAddress: " + address +
+                "\nNumber of Occupants: " + numberOfOccupants);
+    }
+}
+
 
