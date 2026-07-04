@@ -1,1 +1,40 @@
+//Mohamed Irham Fahar El dine 0389843
+
+package SDGApplianceModule.entity;
+
+public class LightAppliance extends Appliance {
+
+    private boolean isEnergyEfficient; // true if it's an energy-saving bulb (e.g. LED)
+
+    public LightAppliance(String applianceName, double powerRate, double hoursUsed, boolean isEnergyEfficient) {
+        super(applianceName, powerRate, hoursUsed);
+        this.isEnergyEfficient = isEnergyEfficient;
+    }
+
+    public boolean isEnergyEfficient() {
+        return isEnergyEfficient;
+    }
+
+    public void setEnergyEfficient(boolean isEnergyEfficient) {
+        this.isEnergyEfficient = isEnergyEfficient;
+    }
+
+    @Override
+    public double calculateEnergyUsed() {
+        double baseEnergy = super.calculateEnergyUsed();
+
+        if (isEnergyEfficient) {
+            return baseEnergy * 0.8; // saves 20% energy
+        } else {
+            return baseEnergy;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() +
+                "\nEnergy Efficient: " + isEnergyEfficient +
+                "\nAdjusted Energy Used (kWh): " + calculateEnergyUsed();
+    }
+}
 
