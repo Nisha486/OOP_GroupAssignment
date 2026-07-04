@@ -1,1 +1,57 @@
+//Omega Mugwagwa
 
+package SDGApplianceModule.entity;
+
+public class EnergyUsageRecord{
+
+    private String recordDate;
+    private double energyConsumed;
+    private double energyUsed;
+
+    public EnergyUsageRecord(){
+
+
+    }
+    public EnergyUsageRecord(String recordDate,
+                             double energyConsumed
+                           double estimated Cost){
+
+        this.recordDate = recordDate;
+        this.energyConsumed = energyConsumed;
+        this.estimatedCost = estimatedCost;
+    }
+
+    public String getRecordDate() {
+        return recordDate;
+    }
+
+    public void setRecordDate(String recordDate) {
+        this.recordDate = recordDate;
+    }
+
+    public double getEnergyConsumed() {
+        return energyConsumed;
+    }
+
+    public void setEnergyConsumed(double energyConsumed) {
+        this.energyConsumed = energyConsumed;
+    }
+
+    public double getEstimatedCost() {
+        return estimatedCost;
+    }
+
+    public void setEstimatedCost(double estimatedCost) {
+        this.estimatedCost = estimatedCost;
+
+    }
+    public String toString() {
+
+        return "Date : " + recordDate
+                + "\nEnergy Consumed : " + energyConsumed + " kWh"
+                + "\nEstimated Cost : RM " + estimatedCost;
+
+    }
+
+
+}
