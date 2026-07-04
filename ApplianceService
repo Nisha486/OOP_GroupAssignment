@@ -1,1 +1,101 @@
+//Omega Mugwagwa
+
+package appliance_module.service;
+
+import appliance_module.entity.Appliance;
+import appliance_module.entity.EnergyTracker;
+import appliance_module.entity.EnergyUsageRecord;
+import appliance_module.entity.Household;
+
+public class ApplianceService {
+
+    private EnergyTracker tracker;
+
+    public ApplianceService() {
+
+        tracker = new EnergyTracker();
+
+    }
+
+    public void registerHousehold(Household household) {
+
+        tracker.setHousehold(household);
+
+    }
+
+    public Household getHousehold() {
+
+        return tracker.getHousehold();
+
+    }
+
+    public void addAppliance(Appliance appliance) {
+
+        tracker.addAppliance(appliance);
+
+    }
+
+    public void displayAppliances() {
+
+        if (tracker.getApplianceList().isEmpty())
+            System.out.println("");
+        return;
+
+    }
+
+        for (Appliance appliance : tracker.getApplianceList()) {
+            System.out.println("");
+            System.out.println(appliance);
+
+    }
+
+    public double calculateTotalEnergy() {
+
+        double total = 0;
+
+        for (Appliance appliance : tracker.getApplianceList()) {
+
+            total += appliance.calculateEnergyConsumption();
+
+        }
+
+        return total;
+
+    }
+
+    public void saveEnergyRecord(String date) {
+
+        double energy = calculateTotalEnergy();
+
+        double cost = energy * 0.57;
+
+        EnergyUsageRecord record =
+                new EnergyUsageRecord(date, energy, cost);
+
+        tracker.addRecord(record);
+
+    }
+
+    public void displayRecords() {
+
+        if (tracker.getRecordList().isEmpty()) {
+
+            System.out.println("No records available.");
+            return;
+
+        }
+
+        for (EnergyUsageRecord record : tracker.getRecordList()) {
+
+            System.out.println("--------------------");
+            System.out.println(record);
+
+        }
+
+    }
+
+}
+
+
+
 
