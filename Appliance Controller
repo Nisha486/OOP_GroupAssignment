@@ -1,0 +1,82 @@
+//Nisharntini Rajandran 0393603
+package SDGApplianceModule.controller;
+
+import SDGApplianceModule.entity.Appliance;
+import SDGApplianceModule.entity.CoolingAppliance;
+import SDGApplianceModule.entity.Household;
+import SDGApplianceModule.entity.LightAppliance;
+
+import SDGApplianceModule.service.ApplianceService;
+import SDGApplianceModule.view.ApplianceView;
+
+public class ApplianceController {
+
+    private ApplianceService service;
+    private ApplianceView view;
+
+    public ApplianceController(ApplianceService service, ApplianceView view){
+        this.service = service;
+        this.view = view;
+    }
+
+    //to run the application
+    public void run() {
+        registerHousehold();
+        int userChoice;
+
+        do {
+            userChoice = view.menu();
+
+            switch(userChoice){
+                case 1:
+                    registerAppliance();
+                     break;
+
+                case 2:
+                    service.displayAppliances();
+                    break;
+
+                case 3:
+                    double total = service.calculateTotalEnergy();
+                    view.displayTotalEnergy(total);
+                    String date = view.inputDate();
+                    sevice.saveEnergyRecord(date);
+                    break;
+
+                case 4:
+                    service.displayRecords();
+                    break;
+
+                case 5:
+                    System.out.println(service.getHousehold());
+                    break;
+
+                case 6:
+                    System.out.println("Thank You :)");
+                    break;
+
+                default:
+                    System.out.println("Invalid Choice :(")
+            }
+        } while (choice != 6);
+    }
+
+    private void registerAppliance() {
+        int type = view.applianceType();
+        String name = view.inputApplianceName();
+        double power = view.inputPower();
+        double hours = view.inputHours();
+        Appliance appliance; //Polymorphism
+
+        if (type == 1){
+            String lightType = view.inputLightType();
+            appliance = new LightAppliance (name,power, hours, lightType);
+        } else{
+            int speed = view.inputSpeedLevel();
+            appliance = new CoolingAppliance (name, power, hours, speed);
+        }
+
+        service.addAppliance(appliance);
+        System.out.println("Appliance Registered Successfully");
+    }
+}
