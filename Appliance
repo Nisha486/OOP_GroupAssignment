@@ -1,0 +1,57 @@
+//Nisharntini Rajandran 0393603
+
+package SDGApplianceModule.entity;
+
+public class Appliance {
+
+    private String applianceName;
+    private double powerRate;
+    private double hoursUsed;
+
+    public Appliance(String applianceName, double powerRate, double hoursUsed){
+        this.applianceName = applianceName;
+        this.powerRate = powerRate;
+        this.hoursUsed = hoursUsed;
+    }
+
+    //Getters and Setters ahead
+    public String getApplianceName() {
+        return applianceName;
+    }
+
+    public void setApplianceName(String applianceName){
+        this.applianceName = applianceName;
+    }
+
+    public double getPowerRate() {
+        return powerRate;
+    }
+
+    public void setPowerRate(double powerRate){
+        this.powerRate = powerRate;
+    }
+
+    public double getHoursUsed() {
+        return hoursUsed;
+    }
+
+    public void setHoursUsed(double hoursUsed){
+        this.hoursUsed = hoursUsed;
+    }
+
+    //Formula: Energy = Power * (hours / 1000)
+    public double calculateEnergyUsed(){
+        return (powerRate * (hoursUsed/1000));
+    }
+
+    @Override //replacing a method
+    //for meaningful info
+    public String toString(){
+        return ("Appliance: " + applianceName +
+                "\n Rate of power used in (Watts): " + powerRate +
+                "\nConsumption Hours: " + hoursUsed);
+    }
+
+}
+
+
