@@ -1,1 +1,50 @@
+//Panashe Kinsley Ngirazi 0393518
+package SDGApplianceModule.entity;
 
+public class CoolingAppliance extends Appliance {
+    private double dutyCycle;
+    private int thermostatSetting;
+
+    public CoolingAppliance(String applianceName, double powerRate, double hoursUsed,
+                            double dutyCycle, int thermostatSetting) {
+        super(applianceName, powerRate, hoursUsed);
+        this.dutyCycle = dutyCycle;
+        this.thermostatSetting = thermostatSetting;
+    }
+
+    // Getters and Setters
+    public double getDutyCycle() {
+        return dutyCycle;
+    }
+    public void setDutyCycle(double dutyCycle) {
+        if (dutyCycle < 0 || dutyCycle > 1) {
+            System.out.println("Invalid duty cycle. Must be between 0 and 1.");
+            return;
+        }
+        this.dutyCycle = dutyCycle;
+    }
+
+    public int getThermostatSetting() {
+        return thermostatSetting;
+    }
+    public void setThermostatSetting(int thermostatSetting) {
+        this.thermostatSetting = thermostatSetting;
+    }
+
+    @Override
+    public double calculateEnergyUsed() {
+        double baseEnergy = getPowerRate() * (getHoursUsed() / 1000);
+        return baseEnergy * dutyCycle;
+    }
+
+    @Override
+    public String toString() {
+        return ("Appliance: " + getApplianceName() +
+                " (Cooling)" +
+                "\n Rate of power used in (Watts): " + getPowerRate() +
+                "\nConsumption Hours: " + getHoursUsed() +
+                "\nThermostat Setting: " + thermostatSetting + "°C" +
+                "\nDuty Cycle: " + (dutyCycle * 100) + "%" +
+                "\nEnergy Used: " + calculateEnergyUsed() + " kWh");
+    }
+}
