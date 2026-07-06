@@ -1,1 +1,17 @@
+//Kinsley
 
+package SDGApplianceModule;
+
+import SDGApplianceModule.controller.ApplianceController;
+import SDGApplianceModule.service.ApplianceService;
+import SDGApplianceModule.view.ApplianceView;
+
+public class MainApp {
+    public static void main(String[] args) {
+        ApplianceService service = new ApplianceService();
+        ApplianceView view = new ApplianceView();
+        ApplianceController controller = new ApplianceController(service, view);
+
+        controller.run();
+    }
+}
