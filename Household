@@ -9,9 +9,9 @@ public class Household {
     private int numberOfOccupants;
 
     public Household(String householdName, String address, int numberOfOccupants) {
-        setHouseholdName(householdName);
-        setAddress(address);
-        setNumberOfOccupants(numberOfOccupants);
+        this.householdName = householdName;
+        this.address = address;
+        this.numberOfOccupants = numberOfOccupants;
     }
 
     public String getHouseholdName() {
@@ -19,11 +19,7 @@ public class Household {
     }
 
     public void setHouseholdName(String householdName) {
-        if (householdName == null || householdName.trim().isEmpty()) {
-            this.householdName = "Unnamed Household";
-        } else {
             this.householdName = householdName;
-        }
     }
 
     public String getAddress() {
@@ -39,11 +35,7 @@ public class Household {
     }
 
     public void setNumberOfOccupants(int numberOfOccupants) {
-        if (numberOfOccupants < 0) {
-            this.numberOfOccupants = 0;
-        } else {
             this.numberOfOccupants = numberOfOccupants;
-        }
     }
 
     @Override
@@ -53,5 +45,4 @@ public class Household {
                 "\nNumber of Occupants: " + numberOfOccupants);
     }
 }
-
 
