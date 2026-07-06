@@ -21,7 +21,7 @@ public class ApplianceController {
 
     //to run the application
     public void run() {
-        registerHousehold();
+        service.registerHousehold();
         int userChoice;
 
         do {
@@ -40,7 +40,7 @@ public class ApplianceController {
                     double total = service.calculateTotalEnergy();
                     view.displayTotalEnergy(total);
                     String date = view.inputDate();
-                    sevice.saveEnergyRecord(date);
+                    service.saveEnergyRecord(date);
                     break;
 
                 case 4:
@@ -56,9 +56,9 @@ public class ApplianceController {
                     break;
 
                 default:
-                    System.out.println("Invalid Choice :(")
+                    System.out.println("Invalid Choice :(");
             }
-        } while (choice != 6);
+        } while (userChoice != 6);
     }
 
     private void registerAppliance() {
@@ -70,7 +70,7 @@ public class ApplianceController {
 
         if (type == 1){
             String lightType = view.inputLightType();
-            appliance = new LightAppliance (name,power, hours, lightType);
+            appliance = new LightAppliance (name,power, hours, lightType.isEmpty());
         } else{
             int speed = view.inputSpeedLevel();
             appliance = new CoolingAppliance (name, power, hours, speed);
