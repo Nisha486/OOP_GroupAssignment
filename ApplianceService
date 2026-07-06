@@ -1,52 +1,43 @@
 //Omega Mugwagwa
 
-package appliance_module.service;
+package SDGApplianceModule.service;
 
-import appliance_module.entity.Appliance;
-import appliance_module.entity.EnergyTracker;
-import appliance_module.entity.EnergyUsageRecord;
-import appliance_module.entity.Household;
+import SDGApplianceModule.entity.Appliance;
+import SDGApplianceModule.entity.EnergyTracker;
+import SDGApplianceModule.entity.EnergyUsageRecord;
+import SDGApplianceModule.entity.Household;
 
 public class ApplianceService {
 
     private EnergyTracker tracker;
 
     public ApplianceService() {
-
         tracker = new EnergyTracker();
-
     }
 
     public void registerHousehold(Household household) {
-
         tracker.setHousehold(household);
-
     }
 
     public Household getHousehold() {
-
         return tracker.getHousehold();
-
     }
 
     public void addAppliance(Appliance appliance) {
-
         tracker.addAppliance(appliance);
-
     }
 
     public void displayAppliances() {
 
-        if (tracker.getApplianceList().isEmpty())
-            System.out.println("");
-        return;
+        if (tracker.getApplianceList().isEmpty()) {
+            System.out.println("No appliances has been input.");
+            return;
+        }
 
-    }
-
-        for (Appliance appliance : tracker.getApplianceList()) {
-            System.out.println("");
+        for (Object appliance : tracker.getApplianceList()) {
+            System.out.println("----------------------------------");
             System.out.println(appliance);
-
+        }
     }
 
     public double calculateTotalEnergy() {
@@ -54,23 +45,17 @@ public class ApplianceService {
         double total = 0;
 
         for (Appliance appliance : tracker.getApplianceList()) {
-
-            total += appliance.calculateEnergyConsumption();
-
+            total += appliance.calculateEnergyUsed();
         }
-
         return total;
 
     }
 
-    public void saveEnergyRecord(String date) {
+    public void saveEnergyRecord(String date){
 
         double energy = calculateTotalEnergy();
-
         double cost = energy * 0.57;
-
-        EnergyUsageRecord record =
-                new EnergyUsageRecord(date, energy, cost);
+        EnergyUsageRecord record =  new EnergyUsageRecord(date, energy, cost);
 
         tracker.addRecord(record);
 
@@ -79,13 +64,11 @@ public class ApplianceService {
     public void displayRecords() {
 
         if (tracker.getRecordList().isEmpty()) {
-
             System.out.println("No records available.");
             return;
-
         }
 
-        for (EnergyUsageRecord record : tracker.getRecordList()) {
+        for (Object record : tracker.getRecordList()) {
 
             System.out.println("--------------------");
             System.out.println(record);
@@ -95,7 +78,6 @@ public class ApplianceService {
     }
 
 }
-
 
 
 
