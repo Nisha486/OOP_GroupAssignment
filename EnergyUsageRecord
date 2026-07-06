@@ -6,15 +6,10 @@ public class EnergyUsageRecord{
 
     private String recordDate;
     private double energyConsumed;
-    private double energyUsed;
+    private double estimatedCost;
 
-    public EnergyUsageRecord(){
-
-
-    }
-    public EnergyUsageRecord(String recordDate,
-                             double energyConsumed
-                           double estimated Cost){
+    public EnergyUsageRecord(String recordDate, double energyConsumed
+                           ,double estimatedCost){
 
         this.recordDate = recordDate;
         this.energyConsumed = energyConsumed;
@@ -46,7 +41,6 @@ public class EnergyUsageRecord{
 
     }
     public String toString() {
-
         return "Date : " + recordDate
                 + "\nEnergy Consumed : " + energyConsumed + " kWh"
                 + "\nEstimated Cost : RM " + estimatedCost;
