@@ -6,7 +6,7 @@ public class CoolingAppliance extends Appliance {
     private int thermostatSetting;
 
     public CoolingAppliance(String applianceName, double powerRate, double hoursUsed,
-                            double dutyCycle, int thermostatSetting) {
+                            double dutyCycle) {
         super(applianceName, powerRate, hoursUsed);
         this.dutyCycle = dutyCycle;
         this.thermostatSetting = thermostatSetting;
@@ -17,10 +17,6 @@ public class CoolingAppliance extends Appliance {
         return dutyCycle;
     }
     public void setDutyCycle(double dutyCycle) {
-        if (dutyCycle < 0 || dutyCycle > 1) {
-            System.out.println("Invalid duty cycle. Must be between 0 and 1.");
-            return;
-        }
         this.dutyCycle = dutyCycle;
     }
 
@@ -33,8 +29,7 @@ public class CoolingAppliance extends Appliance {
 
     @Override
     public double calculateEnergyUsed() {
-        double baseEnergy = getPowerRate() * (getHoursUsed() / 1000);
-        return baseEnergy * dutyCycle;
+        return super.calculateEnergyUsed() * dutyCycle;
     }
 
     @Override
