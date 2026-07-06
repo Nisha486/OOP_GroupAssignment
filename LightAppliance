@@ -24,10 +24,11 @@ public class LightAppliance extends Appliance {
         double baseEnergy = super.calculateEnergyUsed();
 
         if (isEnergyEfficient) {
-            return baseEnergy * 0.8; // saves 20% energy
-        } else {
-            return baseEnergy;
+            baseEnergy= baseEnergy * 0.8; // saves 20% energy
         }
+
+        return baseEnergy;
+
     }
 
     @Override
@@ -37,4 +38,3 @@ public class LightAppliance extends Appliance {
                 "\nAdjusted Energy Used (kWh): " + calculateEnergyUsed();
     }
 }
-
