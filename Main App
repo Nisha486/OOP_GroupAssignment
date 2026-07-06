@@ -1,6 +1,6 @@
 //Kinsley
 
-package SDGApplianceModule;
+package AppModule;
 
 import SDGApplianceModule.controller.ApplianceController;
 import SDGApplianceModule.service.ApplianceService;
